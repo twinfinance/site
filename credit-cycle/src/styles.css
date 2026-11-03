@@ -1,0 +1,96 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/geist';
+
+/* Named as Arc's semantic tokens, so its components drop in as they ship;
+   the values are the dashboards' palette, so the site and the product match. */
+:root {
+  --background: #fbfaf8;
+  --surface: #ffffff;
+  --foreground: #1d1c1a;
+  --text-secondary: #57544e;
+  --border: #e9e7e2;
+  --accent: #4b5bd6;
+  --on-accent: #ffffff;
+  --success: #25754b;
+  --warning: #8f5e0e;
+  --danger: #b23c30;
+  --chip-shadow: rgba(28, 25, 20, 0.18);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --background: #1a1a19;
+    --surface: #1d1d1c;
+    --foreground: #eceae5;
+    --text-secondary: #b5b2ab;
+    --border: #2c2b29;
+    --accent: #8e9af3;
+    --on-accent: #12131c;
+    --success: #5cba86;
+    --warning: #d8a443;
+    --danger: #e57d70;
+    --chip-shadow: rgba(0, 0, 0, 0.5);
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme='dark'] {
+  --background: #1a1a19;
+  --surface: #1d1d1c;
+  --foreground: #eceae5;
+  --text-secondary: #b5b2ab;
+  --border: #2c2b29;
+  --accent: #8e9af3;
+  --on-accent: #12131c;
+  --success: #5cba86;
+  --warning: #d8a443;
+  --danger: #e57d70;
+  --chip-shadow: rgba(0, 0, 0, 0.5);
+  color-scheme: dark;
+}
+
+:root {
+  --accent-soft: color-mix(in srgb, var(--accent) 10%, var(--surface));
+  --accent-ring: color-mix(in srgb, var(--accent) 12%, transparent);
+  --warning-soft: color-mix(in srgb, var(--warning) 12%, var(--surface));
+  --warning-ring: color-mix(in srgb, var(--warning) 12%, transparent);
+  --success-soft: color-mix(in srgb, var(--success) 12%, var(--surface));
+  --success-line: color-mix(in srgb, var(--success) 45%, var(--border));
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-foreground: var(--foreground);
+  --color-text-secondary: var(--text-secondary);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-on-accent: var(--on-accent);
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+  --color-success-line: var(--success-line);
+  --color-warning: var(--warning);
+  --color-warning-soft: var(--warning-soft);
+  --color-danger: var(--danger);
+  --font-sans:
+    'Geist Variable', ui-sans-serif, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, sans-serif;
+  --font-mono:
+    ui-monospace, 'SFMono-Regular', Menlo, Consolas, 'Liberation Mono',
+    monospace;
+  --animate-status-swap: status-swap 280ms ease-out;
+}
+
+@keyframes status-swap {
+  from {
+    opacity: 0;
+    transform: translateY(3px);
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
